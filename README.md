@@ -124,6 +124,13 @@ Resume          Auto-loads checkpoint if already exists
 Fine-tuning from a trained head (rather than random weights)
 prevents catastrophic forgetting of ImageNet features while
 allowing the backbone to adapt to plant disease-specific textures.
+**Training curves showing Phase 1 → Phase 2 transition (green dashed line):**
+
+The temporary accuracy dip at epoch 6 is expected — it occurs when the
+backbone layers are unfrozen and the learning rate resets. The model
+quickly recovers and continues improving, reaching 95.25% Top-1 accuracy.
+
+![Training Curves](images/plant_training_curves.png)
 
 ---
 
@@ -158,6 +165,10 @@ model is reasoning about biologically meaningful disease regions
 or learning spurious background correlations.
 
 ![Grad-CAM and CBAM Visualisation](images/plant_gradcam_cbam.png)
+
+**Normalized Confusion Matrix — Top-1: 95.25%**
+
+![Confusion Matrix](images/plant_confusion_matrix.png)
 
 ---
 
