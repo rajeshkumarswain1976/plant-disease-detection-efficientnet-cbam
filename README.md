@@ -130,7 +130,7 @@ The temporary accuracy dip at epoch 6 is expected — it occurs when the
 backbone layers are unfrozen and the learning rate resets. The model
 quickly recovers and continues improving, reaching 95.25% Top-1 accuracy.
 
-![Training Curves](images/plant_training_curves.png)
+![Training Curves](images/training_curves.png)
 
 ---
 
@@ -168,7 +168,7 @@ or learning spurious background correlations.
 
 **Normalized Confusion Matrix — Top-1: 95.25%**
 
-![Confusion Matrix](images/plant_confusion_matrix.png)
+![Confusion Matrix](images/confusion_matrix.png)
 
 ---
 
