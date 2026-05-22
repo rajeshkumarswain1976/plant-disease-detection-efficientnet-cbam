@@ -61,26 +61,19 @@ Plant Disease Dataset —
 ---
 
 ### Model Architecture
-Input: 380×380×3
-EfficientNetB4 Backbone (pretrained ImageNet)
-↓ feature maps (frozen in Phase 1, top layers unfrozen in Phase 2)
-CBAM Attention Module
-├── Channel Attention
-│     GlobalAvgPool + GlobalMaxPool
-│     → Shared MLP (channels/8 → channels)
-│     → Sigmoid weights applied to each channel
-│     → Answers: WHAT features to focus on
-│
-└── Spatial Attention
-AvgPool + MaxPool across channels → concat
-→ Conv2d(7×7) → Sigmoid spatial mask
-→ Answers: WHERE in the image to focus
-GlobalAveragePooling2D
-BatchNormalization
-Dropout(0.4)
-Dense(512, ReLU, L2 regularisation)
-Dense(87, float32)
-Softmax → 87-class output
+
+| Layer | Details |
+|---|---|
+| **Input** | 380×380×3 |
+| **EfficientNetB4 Backbone** | Pretrained ImageNet · frozen in Phase 1 · top layers unfrozen in Phase 2 |
+| **Channel Attention (CBAM)** | GlobalAvgPool + GlobalMaxPool → Shared MLP (channels/8 → channels) → Sigmoid weights per channel → answers WHAT to focus on |
+| **Spatial Attention (CBAM)** | AvgPool + MaxPool across channels → concat → Conv2d(7×7) → Sigmoid spatial mask → answers WHERE to focus |
+| **GlobalAveragePooling2D** | Spatial dimension collapse |
+| **BatchNormalization** | Normalise activations |
+| **Dropout(0.4)** | Regularisation |
+| **Dense(512, ReLU, L2)** | Feature compression |
+| **Dense(87, float32)** | Output logits |
+| **Softmax** | 87-class probability output |
 
 ---
 
@@ -279,17 +272,16 @@ Files generated after running (not in repo due to size):
 
 ### Images Folder
 
-Create an `images/` folder and upload these 6 images
-(all already extracted and available for download above):
-
 | File | Where it comes from |
 |---|---|
-| `class_distribution.png` | Cell 6 — class distribution bar chart |
-| `sample_images.png` | Cell 6 — sample images per class grid |
-| `gradcam_cbam.png` | Cell 13 — Grad-CAM + CBAM side by side |
-| `known_predictions.png` | Cell 16 — known disease prediction grid |
-| `uncertain_predictions.png` | Cell 16 — uncertain/unknown predictions |
-| `confidence_distribution.png` | Cell 16 — confidence histogram |
+| `plant_class_distribution.png` | Cell 6 — class distribution bar chart |
+| `plant_sample_images.png` | Cell 6 — sample images per class grid |
+| `plant_gradcam_cbam.png` | Cell 13 — Grad-CAM + CBAM side by side |
+| `plant_known_predictions.png` | Cell 16 — known disease prediction grid |
+| `plant_uncertain_predictions.png` | Cell 16 — uncertain/unknown predictions |
+| `plant_confidence_distribution.png` | Cell 16 — confidence histogram |
+| `plant_confusion_matrix.png` | Normalized confusion matrix — Top-1: 95.25% |
+| `plant_training_curves.png` | Phase 1 and Phase 2 training curves |
 
 ---
 
@@ -302,4 +294,3 @@ pycache/
 plant_disease/
 saved_models/
 
-> Remove your Kaggle API credentials from Cell 4 before pushing to GitHub.
