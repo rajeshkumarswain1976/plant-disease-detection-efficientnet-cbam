@@ -52,11 +52,11 @@ Plant Disease Dataset —
 
 **Class Distribution across all 87 classes:**
 
-![Class Distribution](images/class_distribution.png)
+![Class Distribution](images/plant_class_distribution.png)
 
 **Sample images showing disease diversity:**
 
-![Sample Images](images/sample_images.png)
+![Sample Images](images/plant_sample_images.png)
 
 ---
 
@@ -157,7 +157,7 @@ Comparing Grad-CAM and CBAM side by side reveals whether the
 model is reasoning about biologically meaningful disease regions
 or learning spurious background correlations.
 
-![Grad-CAM and CBAM Visualisation](images/gradcam_cbam.png)
+![Grad-CAM and CBAM Visualisation](images/plant_gradcam_cbam.png)
 
 ---
 
@@ -165,11 +165,11 @@ or learning spurious background correlations.
 
 **Known disease predictions — high confidence correct predictions:**
 
-![Known Predictions](images/known_predictions.png)
+![Known Predictions](images/plant_known_predictions.png)
 
 **Uncertain and unknown disease handling:**
 
-![Uncertain Predictions](images/uncertain_predictions.png)
+![Uncertain Predictions](images/plant_uncertain_predictions.png)
 
 Predictions below 50% confidence threshold are flagged as
 UNCERTAIN rather than forced into a known class. This makes
@@ -187,7 +187,7 @@ indicating strong class separation. Predictions below the
 0.5 threshold (left of the red dashed line) are treated
 as unknown or uncertain diseases.
 
-![Confidence Distribution](images/confidence_distribution.png)
+![Confidence Distribution](images/plant_confidence_distribution.png)
 
 ---
 
